@@ -125,6 +125,14 @@ Atlas minimizes and redacts data before inter-agent routing, rejects unsafe inst
 | `db/postgres/001_tenant_rls.sql` | PostgreSQL tenant schema and RLS policies |
 | `server/*.test.ts` | Authentication, adversarial, privacy, and OIDC regression tests |
 
+## GitHub security automation
+
+Atlas 1 includes [`.github/dependabot.yml`](.github/dependabot.yml), which checks the npm manifest every Monday at 04:00 UTC and groups development and production dependency updates. Repository-level Dependabot alerts and Dependabot security updates are enabled in GitHub, so vulnerable dependency findings can be surfaced and security-update pull requests can be opened automatically. GitHub’s official guidance covers [Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/configuring-dependabot-alerts) and [Dependabot security updates](https://docs.github.com/github/managing-security-vulnerabilities/configuring-dependabot-security-updates).
+
+Secret scanning and repository push protection are enabled for this public repository. Push protection blocks recognized credentials before they enter the repository; if a contributor bypasses a block, GitHub records the bypass event and can create an alert. Generic non-provider patterns are currently disabled by the account/repository plan or GitHub entitlement, so enable them later under **Settings → Advanced Security → Secret Protection → Generic patterns** if GitHub makes that control available. See GitHub’s [generic-pattern documentation](https://docs.github.com/en/code-security/how-tos/secure-your-secrets/detect-secret-leaks/enabling-secret-scanning-for-non-provider-patterns) and [push-protection documentation](https://docs.github.com/en/code-security/concepts/secret-security/push-protection).
+
+For every alert, rotate the credential first, remove it from the working tree and history where appropriate, identify access logs or downstream use, and record the remediation. Do not place real provider tokens in tests, examples, issues, or pull-request descriptions.
+
 ## References
 
 - [Auth0 JSON Web Key Sets](https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-key-sets)
