@@ -133,6 +133,8 @@ Secret scanning and repository push protection are enabled for this public repos
 
 For every alert, rotate the credential first, remove it from the working tree and history where appropriate, identify access logs or downstream use, and record the remediation. Do not place real provider tokens in tests, examples, issues, or pull-request descriptions.
 
+The initial dependency scan identified a critical Vitest advisory affecting the 2.x line and vulnerable Vite/esbuild transitive paths. Atlas 1 now uses Vitest `4.1.11`, which is above the patched release line for the critical advisory. After regenerating `pnpm-lock.yaml`, `pnpm audit` reports **zero critical, high, moderate, or low advisories**. The complete 23-test suite, strict TypeScript check, and production build also pass with the upgraded toolchain.
+
 ## References
 
 - [Auth0 JSON Web Key Sets](https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-key-sets)
