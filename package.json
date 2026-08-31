@@ -12,8 +12,8 @@
     "test": "vitest run --config vitest.config.ts"
   },
   "dependencies": {
-    "express": "^4.21.2",
-    "jose": "6.1.0"
+    "express": "^5.2.1",
+    "jose": "6.2.9"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
